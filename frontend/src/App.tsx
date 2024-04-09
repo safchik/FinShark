@@ -20,15 +20,17 @@ function App() {
     const result = await searchCompanies(search);
     if (typeof result === "string") {
       setServerError(result);
-    } else (Array.isArray(result.data)) {
+    } else if (Array.isArray(result.data)) {
       setSearchResult(result.data);
     }
+    console.log(searchResult);
   };
 
   return (
     <div className="App">
       <Search onClick={onClick} search={search} handleChange={handleChange} />
-      <CardList />
+      <CardList searchResults={searchResult} />
+      {serverError && <div>Unable to connect to API</div>}
     </div>
   );
 }
