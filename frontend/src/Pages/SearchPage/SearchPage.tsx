@@ -9,11 +9,11 @@ interface Props { }
 
 const SearchPage = (props: Props) => {
     const [search, setSearch] = useState<string>("");
+    const [portfolioValues, setPortfolioValues] = useState<string[]>([]);
     const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
     const [serverError, setServerError] = useState<string>("");
-    const [portfolioValues, setPortfolioValues] = useState<string[]>([]);
 
-    const handlesearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
         console.log(e);
     };
@@ -42,12 +42,12 @@ const SearchPage = (props: Props) => {
         } else if (Array.isArray(result.data)) {
             setSearchResult(result.data);
         }
-        console.log(searchResult);
+
     };
     return (
         <div className="App">
 
-            <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handlesearchChange} />
+            <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange} />
             <ListPortfolio portfolioValues={portfolioValues} onPortfolioDelete={onPortfolioDelete} />
             <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate} />
             {serverError && <div>Unable to connect to API</div>}
