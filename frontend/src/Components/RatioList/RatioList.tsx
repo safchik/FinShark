@@ -1,27 +1,12 @@
-import React from 'react'
-import { TestDataCompany } from '../Table/testData'
 
-type Props = {}
 
-const data = TestDataCompany[0];
+type Props = {
+    config: any;
+    data: any;
+}
 
-type Company = typeof data;
-
-const config = [
-    {
-        label: "Company Name",
-        render: (company: Company) => company.companyName,
-        subTitle: "This is company",
-    },
-    {
-        label: "Company Name",
-        render: (company: Company) => company.companyName,
-        subTitle: "This is company",
-    }
-]
-
-const RatioList = (props: Props) => {
-    const renderedRows = config.map(row => {
+const RatioList = ({ config, data }: Props) => {
+    const renderedRows = config.map((row: any) => {
         return (
             <li className='py-3 sm:py-4'>
                 <div className='flex items-center space-x-4'>
