@@ -1,3 +1,5 @@
 .vs
+.mono
 bin
 obj
+node_modules
