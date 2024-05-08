@@ -1,4 +1,5 @@
-﻿using api.Model;
+﻿using api.Dtos.Comment;
+using api.Model;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,6 +17,8 @@ namespace api.Dtos.Stock
 
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; }
+
+        public List<CommentDto> Comments { get; set; }
 
     }
 }
